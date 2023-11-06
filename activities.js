@@ -2,6 +2,7 @@
 
 window.onload = function() {
     initCategoryDropdown();
+    initActivitiesDropdown();
 }
 
 function initCategoryDropdown() {
@@ -117,4 +118,17 @@ function initCategoryDropdown() {
         categoriesList.appendChild(theOption);
 
     }
+}
+
+function initActivitiesDropdown() {
+    const categoriesList = document.querySelector('#categoriesList');
+
+    categoriesList.onchange = function() {
+
+        if (categoriesList.value == 'Adventures') {
+            alert('This is a coco');
+        }
+    }
+ 
+
 }
