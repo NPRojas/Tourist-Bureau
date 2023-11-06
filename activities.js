@@ -129,14 +129,48 @@ function initActivitiesDropdown() {
 
     categoriesList.onchange = function() {
         // clear the list
-        activitiesList.options.length = 0;
+        activitiesList.options.length = 1;
         // add options to the list 
         for (let i = 0; i < length; i++) {
 
             if (categoriesList.value == activities[i].category) {
-                let theOption = new Option(activities[i].name, activities[i].category);
+                let theOption = new Option(activities[i].name, activities[i].name);
                 activitiesList.appendChild(theOption);
             }   
         }      
     }
+
+    activitiesList.onchange = function () {
+        const main = document.querySelector('main');
+        const para = document.querySelector('p');
+        // clear the old information
+        const divs = document.querySelectorAll('.info');
+        divs.forEach((div) => {div.remove()});
+        //find the object of the of the value in the array
+        const activityInfo = activities.find(item => item.name == activitiesList.value);
+      
+        addNewDiv(`Name: ${activityInfo.name}`);
+        addNewDiv(`Description: ${activityInfo.description}`);
+        addNewDiv(`Location: ${activityInfo.location}`);
+        addNewDiv(`Price: ${activityInfo.price}`);
+        main.appendChild(para);
+    }
+}
+
+function displayDetails() {
+
+    let para = document.createElement('p');
+    let main = document.querySelector('main');
+    para.textContent = 'Hello';
+    main.appendChild(para);
+
+}
+
+function addNewDiv(text) {
+    const para = document.querySelector('p');
+    const newText = document.createElement('div');
+    newText.classList.add('info');
+    newText.textContent = text;
+
+    para.appendChild(newText);
 }
