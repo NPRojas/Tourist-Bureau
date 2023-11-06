@@ -22,7 +22,7 @@ function initCategoryDropdown() {
 }
 
 function initActivitiesDropdown() {
-    
+
     let activities = [
         {
                 category: "Adventures", 
@@ -129,9 +129,7 @@ function initActivitiesDropdown() {
 
     categoriesList.onchange = function() {
         // clear the list
-        while (activitiesList.options.length > 0) {
-            activitiesList.options[0] = null;
-        }
+        activitiesList.options.length = 0;
         // add options to the list 
         for (let i = 0; i < length; i++) {
 
